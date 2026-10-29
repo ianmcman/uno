@@ -1,0 +1,20 @@
+# Uno: static site served by a small Node server (no dependencies). Public through SWAG at uno.ianmcmanus.net.
+services:
+  uno:
+    build: .
+    image: uno:local
+    container_name: uno
+    ports:
+      - "192.168.2.30:${UNO_PORT:-8102}:8080"
+    restart: unless-stopped
+    environment:
+      TRUSTED_PROXY: 192.168.20.31,192.168.20.33
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 128m
+    cpus: 0.5
