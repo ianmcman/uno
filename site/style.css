@@ -195,3 +195,25 @@ body {
 .lobby-list li { display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; background: var(--card-hi); border: 1px solid var(--border); border-radius: 6px; color: var(--text-hi); }
 .tag { color: var(--green); font-size: 0.8rem; }
 .reconnecting { position: fixed; top: calc(8px + var(--sat)); left: 50%; transform: translateX(-50%); z-index: 5; background: var(--yellow); color: #1b1c17; padding: 6px 12px; border-radius: 6px; font-weight: 600; }
+
+/* Desktop: wide table, bigger cards, hand wraps instead of scrolling */
+@media (min-width: 900px) and (min-height: 600px) {
+  :root {
+    --tw: clamp(100px, calc((100dvh - 480px) / 1.5), 170px);
+    --hw: clamp(72px, calc((100vw - 120px) / 12), 104px);
+  }
+  body { font-size: 15px; }
+  #app { max-width: 1100px; }
+  .screen:not(.game) { width: min(600px, 100%); margin: 0 auto; padding-top: 40px; }
+  .title { font-size: 2.1rem; }
+  .card { padding: 22px; }
+  .game { padding-top: 24px; padding-bottom: 20px; gap: 14px; }
+  .chip { padding: 10px 14px; }
+  .chip-total { font-size: 1.5rem; }
+  .hand { flex-wrap: wrap; justify-content: center; overflow: visible; padding: 20px 4px 8px; margin: 0; }
+  .actions { width: min(560px, 100%); align-self: center; }
+  .bottom-bar { margin: 0; align-self: center; width: min(360px, 100%); border: 1px solid var(--border); border-radius: 10px; padding: 4px 8px; }
+  .btn:not(:disabled):hover { filter: brightness(1.12); }
+  .hand .uc.playable:hover { transform: translateY(-14px); }
+  .bar-btn:hover { color: var(--text-hi); }
+}
